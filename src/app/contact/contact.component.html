@@ -1,0 +1,17 @@
+<form #contactForm="ngForm" (ngSubmit)="sendContactMessage()" unvalidate>
+  <div class="form-group">
+    <label for="firstName">First Name</label>
+    <input type="text" id="firstName" name="firstName" class="form-control"
+           [(ngModel)]="cUser.name" required #firstName="ngModel" />
+    <div [hidden]="firstName.valid || firstName.pristine" class="error">
+      First name is required
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="comment">Comment</label>
+    <textarea id="comment" name="comment" rows="10" cols="30" class="form-control" 
+              [(ngModel)]="cUser.comment" #comment="ngModel"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary"
+          [disabled]="!contactForm.form.valid" >! OK !</button>
+</form>
